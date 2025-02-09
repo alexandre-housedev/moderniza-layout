@@ -1,8 +1,16 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Bell, BookOpen, ExternalLink } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   const { toast } = useToast();
@@ -136,31 +144,42 @@ const Index = () => {
             <BookOpen className="h-8 w-8 text-accent" />
             <h2 className="text-3xl font-bold">Biblioteca Digital</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {books.map((book, index) => (
-              <div
-                key={book.title}
-                className="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4 overflow-hidden">
-                  <img 
-                    src={book.cover} 
-                    alt={book.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 line-clamp-2">{book.title}</h3>
-                <p className="text-sm text-gray-600 mb-2">{book.author}</p>
-                <Link
-                  to={book.link}
-                  className="text-accent hover:underline text-sm flex items-center gap-1"
-                >
-                  Acessar <ExternalLink className="h-3 w-3" />
-                </Link>
-              </div>
-            ))}
-          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {books.map((book, index) => (
+                <CarouselItem key={book.title} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
+                  <div
+                    className="group bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-up h-full"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4 overflow-hidden">
+                      <img 
+                        src={book.cover} 
+                        alt={book.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 line-clamp-2">{book.title}</h3>
+                    <p className="text-sm text-gray-600 mb-2">{book.author}</p>
+                    <Link
+                      to={book.link}
+                      className="text-accent hover:underline text-sm flex items-center gap-1"
+                    >
+                      Acessar <ExternalLink className="h-3 w-3" />
+                    </Link>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-4" />
+            <CarouselNext className="hidden md:flex -right-4" />
+          </Carousel>
         </div>
       </section>
     </div>

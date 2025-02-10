@@ -1,6 +1,5 @@
-
 import { Link } from "react-router-dom";
-import { Linkedin, FileText, Mail } from "lucide-react";
+import { Linkedin, FileText, Mail, Award, Calendar } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -53,6 +52,34 @@ const students = [
   },
 ];
 
+const scholarshipStudents = [
+  {
+    year: "2024",
+    students: [
+      {
+        name: "Lucas Silva",
+        project: "Machine Learning em Tempo Real",
+        type: "CAPES"
+      },
+      {
+        name: "Maria Santos",
+        project: "Redes Neurais Aplicadas",
+        type: "CNPq"
+      }
+    ]
+  },
+  {
+    year: "2023",
+    students: [
+      {
+        name: "João Lima",
+        project: "Processamento de Imagens",
+        type: "FAPESP"
+      }
+    ]
+  }
+];
+
 const TeamMemberCard = ({ member, isStudent = false }) => (
   <Card className="group animate-fade-up hover:shadow-lg transition-all duration-300">
     <CardHeader className="text-center">
@@ -102,6 +129,60 @@ const TeamMemberCard = ({ member, isStudent = false }) => (
   </Card>
 );
 
+const Timeline = () => (
+  <div className="mt-16 px-4">
+    <h2 className="text-3xl font-bold text-center mb-8 animate-fade-up">
+      Alunos Bolsistas
+    </h2>
+    <div className="space-y-8">
+      {scholarshipStudents.map((yearGroup, index) => (
+        <div 
+          key={yearGroup.year}
+          className="relative pl-8 animate-fade-up"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          <div className="flex items-center mb-4">
+            <Calendar className="h-6 w-6 text-accent absolute -left-3" />
+            <div className="ml-2 text-xl font-semibold">{yearGroup.year}</div>
+          </div>
+          <div className="space-y-4">
+            {yearGroup.students.map((student) => (
+              <Card key={student.name} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <h4 className="font-semibold">{student.name}</h4>
+                  <p className="text-sm text-gray-600">{student.project}</p>
+                  <span className="inline-block mt-2 text-xs bg-accent/10 text-accent px-2 py-1 rounded-full">
+                    {student.type}
+                  </span>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const Acknowledgments = () => (
+  <div className="bg-secondary/50 py-12 px-4 mt-16 rounded-lg animate-fade-up">
+    <div className="max-w-2xl mx-auto text-center">
+      <Award className="h-12 w-12 mx-auto mb-4 text-accent" />
+      <h2 className="text-3xl font-bold mb-4">Agradecimentos</h2>
+      <p className="text-gray-600 mb-6">
+        Agradecemos às agências de fomento CAPES, CNPq e FAPESP pelo apoio 
+        fundamental ao desenvolvimento de nossa pesquisa e à formação de 
+        nossos alunos através da concessão de bolsas de estudo.
+      </p>
+      <div className="flex justify-center gap-8">
+        <img src="/placeholder.svg" alt="CAPES" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
+        <img src="/placeholder.svg" alt="CNPq" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
+        <img src="/placeholder.svg" alt="FAPESP" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
+      </div>
+    </div>
+  </div>
+);
+
 const Team = () => {
   return (
     <div className="container py-12">
@@ -135,6 +216,9 @@ const Team = () => {
           </div>
         </TabsContent>
       </Tabs>
+
+      <Timeline />
+      <Acknowledgments />
     </div>
   );
 };

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nossa Equipe - LESH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset e estilos base */
         * {
@@ -18,81 +19,88 @@
             background-color: #fff;
             color: #1a1a1a;
             line-height: 1.5;
+            padding: 2rem 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 1rem;
+            padding: 0 1rem;
         }
 
-        /* Estilos do cabeçalho */
+        /* Cabeçalho */
         .page-title {
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 2rem;
-            opacity: 0;
             animation: fadeUp 0.5s ease forwards;
         }
 
         /* Tabs */
         .tabs {
-            max-width: 400px;
-            margin: 0 auto 2rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tabs-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            overflow: hidden;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            background: #f5f5f5;
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+            gap: 0.25rem;
         }
 
         .tab-trigger {
-            padding: 0.75rem;
-            background: none;
-            border: none;
+            all: unset;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 0.25rem;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .tab-trigger.active {
-            background-color: #e63946;
-            color: white;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        /* Cards grid */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Grid de cards */
         .cards-grid {
             display: grid;
             gap: 1.5rem;
-            padding: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            animation: fadeUp 0.5s ease forwards;
         }
 
-        @media (min-width: 768px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .cards-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* Card styles */
+        /* Card */
         .card {
             background: white;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            text-align: center;
             transition: all 0.3s;
+            overflow: hidden;
         }
 
         .card:hover {
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 1rem;
+            text-align: center;
         }
 
         .avatar {
@@ -100,36 +108,39 @@
             height: 128px;
             border-radius: 50%;
             margin: 0 auto 1rem;
-            background-color: #f3f4f6;
+            background: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            color: #6b7280;
+            color: #666;
+            overflow: hidden;
         }
 
         .avatar img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
         }
 
-        .name {
+        .card-title {
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .role {
-            color: #6b7280;
+        .card-description {
             font-size: 0.875rem;
-            margin-bottom: 1rem;
+            color: #666;
         }
 
-        .info {
-            color: #6b7280;
+        .card-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .info-text {
             font-size: 0.875rem;
+            color: #666;
             margin-bottom: 1rem;
         }
 
@@ -140,15 +151,15 @@
         }
 
         .social-link {
-            color: #6b7280;
-            transition: color 0.3s;
+            color: #666;
+            transition: color 0.2s;
         }
 
         .social-link:hover {
             color: #e63946;
         }
 
-        /* Timeline styles */
+        /* Timeline */
         .timeline {
             margin-top: 4rem;
             padding: 0 1rem;
@@ -159,20 +170,22 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 2rem;
+            animation: fadeUp 0.5s ease forwards;
         }
 
         .timeline-item {
             position: relative;
             padding-left: 2rem;
             margin-bottom: 2rem;
+            animation: fadeUp 0.5s ease forwards;
         }
 
         .timeline-year {
+            display: flex;
+            align-items: center;
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
         }
 
         .timeline-year::before {
@@ -181,7 +194,7 @@
             left: 0;
             width: 1.5rem;
             height: 1.5rem;
-            background-color: #e63946;
+            background: #e63946;
             border-radius: 50%;
         }
 
@@ -191,15 +204,38 @@
             padding: 1rem;
             margin-bottom: 1rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
         }
 
-        /* Acknowledgments styles */
+        .timeline-card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            color: #e63946;
+            background: rgba(230, 57, 70, 0.1);
+            border-radius: 9999px;
+        }
+
+        /* Agradecimentos */
         .acknowledgments {
-            background-color: rgba(245,245,245,0.5);
+            background: rgba(245, 245, 245, 0.5);
+            border-radius: 0.75rem;
             padding: 3rem 1rem;
             margin-top: 4rem;
-            border-radius: 0.5rem;
             text-align: center;
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .acknowledgments-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            color: #e63946;
         }
 
         .acknowledgments-title {
@@ -209,9 +245,9 @@
         }
 
         .acknowledgments-text {
-            color: #6b7280;
             max-width: 42rem;
             margin: 0 auto 1.5rem;
+            color: #666;
         }
 
         .logos {
@@ -230,6 +266,7 @@
             opacity: 1;
         }
 
+        /* Animações */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -240,6 +277,17 @@
                 transform: translateY(0);
             }
         }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logos {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
@@ -247,121 +295,168 @@
         <h1 class="page-title">Nossa Equipe</h1>
         
         <div class="tabs">
-            <button class="tab-trigger active" onclick="showTab('professors')">Professores</button>
-            <button class="tab-trigger" onclick="showTab('students')">Alunos</button>
-        </div>
+            <div class="tabs-list">
+                <button class="tab-trigger active" onclick="showTab('professors')">Professores</button>
+                <button class="tab-trigger" onclick="showTab('students')">Alunos</button>
+            </div>
 
-        <div id="professors-tab" class="cards-grid">
-            <div class="card">
-                <div class="avatar">
-                    <img src="/placeholder.svg" alt="Dra. Maria Silva" onerror="this.innerText='MS'">
-                </div>
-                <h3 class="name">Dra. Maria Silva</h3>
-                <p class="role">Coordenadora</p>
-                <p class="info"><strong>Área:</strong> Inteligência Artificial</p>
-                <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/linkedin.svg" alt="LinkedIn" width="20" height="20">
-                    </a>
-                    <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/file-text.svg" alt="Lattes" width="20" height="20">
-                    </a>
-                    <a href="mailto:maria.silva@edu.br" class="social-link">
-                        <img src="https://lucide.dev/icons/mail.svg" alt="Email" width="20" height="20">
-                    </a>
+            <div id="professors-tab" class="tab-content active">
+                <div class="cards-grid">
+                    <!-- Professor 1 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="/placeholder.svg" alt="Dra. Maria Silva" onerror="this.parentElement.innerHTML='MS'">
+                            </div>
+                            <h3 class="card-title">Dra. Maria Silva</h3>
+                            <p class="card-description">Coordenadora</p>
+                        </div>
+                        <div class="card-content">
+                            <p class="info-text">
+                                <strong>Área:</strong> Inteligência Artificial
+                            </p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                </a>
+                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </a>
+                                <a href="mailto:maria.silva@edu.br" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professor 2 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="/placeholder.svg" alt="Dr. João Santos" onerror="this.parentElement.innerHTML='JS'">
+                            </div>
+                            <h3 class="card-title">Dr. João Santos</h3>
+                            <p class="card-description">Professor Pesquisador</p>
+                        </div>
+                        <div class="card-content">
+                            <p class="info-text">
+                                <strong>Área:</strong> Computação Quântica
+                            </p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                </a>
+                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </a>
+                                <a href="mailto:joao.santos@edu.br" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="avatar">
-                    <img src="/placeholder.svg" alt="Dr. João Santos" onerror="this.innerText='JS'">
-                </div>
-                <h3 class="name">Dr. João Santos</h3>
-                <p class="role">Professor Pesquisador</p>
-                <p class="info"><strong>Área:</strong> Computação Quântica</p>
-                <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/linkedin.svg" alt="LinkedIn" width="20" height="20">
-                    </a>
-                    <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/file-text.svg" alt="Lattes" width="20" height="20">
-                    </a>
-                    <a href="mailto:joao.santos@edu.br" class="social-link">
-                        <img src="https://lucide.dev/icons/mail.svg" alt="Email" width="20" height="20">
-                    </a>
-                </div>
-            </div>
-        </div>
+            <div id="students-tab" class="tab-content">
+                <div class="cards-grid">
+                    <!-- Aluno 1 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="/placeholder.svg" alt="Ana Oliveira" onerror="this.parentElement.innerHTML='AO'">
+                            </div>
+                            <h3 class="card-title">Ana Oliveira</h3>
+                            <p class="card-description">Doutoranda</p>
+                        </div>
+                        <div class="card-content">
+                            <p class="info-text">
+                                <strong>Projeto:</strong> Machine Learning aplicado à Saúde
+                            </p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                </a>
+                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </a>
+                                <a href="mailto:ana.oliveira@edu.br" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-        <div id="students-tab" class="cards-grid" style="display: none;">
-            <div class="card">
-                <div class="avatar">
-                    <img src="/placeholder.svg" alt="Ana Oliveira" onerror="this.innerText='AO'">
-                </div>
-                <h3 class="name">Ana Oliveira</h3>
-                <p class="role">Doutoranda</p>
-                <p class="info"><strong>Projeto:</strong> Machine Learning aplicado à Saúde</p>
-                <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/linkedin.svg" alt="LinkedIn" width="20" height="20">
-                    </a>
-                    <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/file-text.svg" alt="Lattes" width="20" height="20">
-                    </a>
-                    <a href="mailto:ana.oliveira@edu.br" class="social-link">
-                        <img src="https://lucide.dev/icons/mail.svg" alt="Email" width="20" height="20">
-                    </a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="avatar">
-                    <img src="/placeholder.svg" alt="Pedro Costa" onerror="this.innerText='PC'">
-                </div>
-                <h3 class="name">Pedro Costa</h3>
-                <p class="role">Mestrando</p>
-                <p class="info"><strong>Projeto:</strong> Processamento de Linguagem Natural</p>
-                <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/linkedin.svg" alt="LinkedIn" width="20" height="20">
-                    </a>
-                    <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                        <img src="https://lucide.dev/icons/file-text.svg" alt="Lattes" width="20" height="20">
-                    </a>
-                    <a href="mailto:pedro.costa@edu.br" class="social-link">
-                        <img src="https://lucide.dev/icons/mail.svg" alt="Email" width="20" height="20">
-                    </a>
+                    <!-- Aluno 2 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="/placeholder.svg" alt="Pedro Costa" onerror="this.parentElement.innerHTML='PC'">
+                            </div>
+                            <h3 class="card-title">Pedro Costa</h3>
+                            <p class="card-description">Mestrando</p>
+                        </div>
+                        <div class="card-content">
+                            <p class="info-text">
+                                <strong>Projeto:</strong> Processamento de Linguagem Natural
+                            </p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                                </a>
+                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </a>
+                                <a href="mailto:pedro.costa@edu.br" class="social-link">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="timeline">
             <h2 class="timeline-title">Alunos Bolsistas</h2>
+            
+            <!-- 2024 -->
             <div class="timeline-item">
-                <div class="timeline-year">2024</div>
+                <div class="timeline-year">
+                    <svg width="24" height="24" class="timeline-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2024
+                </div>
                 <div class="timeline-card">
-                    <h4 class="name">Lucas Silva</h4>
-                    <p class="info">Machine Learning em Tempo Real</p>
+                    <h4 class="card-title">Lucas Silva</h4>
+                    <p class="info-text">Machine Learning em Tempo Real</p>
                     <span class="badge">CAPES</span>
                 </div>
                 <div class="timeline-card">
-                    <h4 class="name">Maria Santos</h4>
-                    <p class="info">Redes Neurais Aplicadas</p>
+                    <h4 class="card-title">Maria Santos</h4>
+                    <p class="info-text">Redes Neurais Aplicadas</p>
                     <span class="badge">CNPq</span>
                 </div>
             </div>
+
+            <!-- 2023 -->
             <div class="timeline-item">
-                <div class="timeline-year">2023</div>
+                <div class="timeline-year">
+                    <svg width="24" height="24" class="timeline-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    2023
+                </div>
                 <div class="timeline-card">
-                    <h4 class="name">João Lima</h4>
-                    <p class="info">Processamento de Imagens</p>
+                    <h4 class="card-title">João Lima</h4>
+                    <p class="info-text">Processamento de Imagens</p>
                     <span class="badge">FAPESP</span>
                 </div>
             </div>
         </div>
 
         <div class="acknowledgments">
-            <img src="https://lucide.dev/icons/award.svg" alt="Award" width="48" height="48" style="margin: 0 auto 1rem;">
+            <svg class="acknowledgments-icon" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="7"/>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
             <h2 class="acknowledgments-title">Agradecimentos</h2>
             <p class="acknowledgments-text">
                 Agradecemos às agências de fomento CAPES, CNPq e FAPESP pelo apoio 
@@ -378,21 +473,17 @@
 
     <script>
         function showTab(tabName) {
-            // Hide all tabs
-            document.getElementById('professors-tab').style.display = 'none';
-            document.getElementById('students-tab').style.display = 'none';
-            
-            // Show selected tab
-            document.getElementById(tabName + '-tab').style.display = 'grid';
-            
-            // Update active button
-            const buttons = document.querySelectorAll('.tab-trigger');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-                if (button.innerText.toLowerCase().includes(tabName)) {
-                    button.classList.add('active');
-                }
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab-trigger').forEach(trigger => {
+                trigger.classList.remove('active');
             });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Add active class to selected tab and content
+            document.querySelector(`.tab-trigger[onclick*="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
         }
     </script>
 </body>

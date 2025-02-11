@@ -16,253 +16,191 @@
         }
 
         body {
-            background-color: #fff;
+            background-color: #f8f9fa;
             color: #1a1a1a;
             line-height: 1.5;
-            padding: 2rem 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 2rem 1rem;
         }
 
-        /* Cabeçalho */
-        .page-title {
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eaeaea;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #e63946;
+        }
+
+        /* Cabeçalhos de seção */
+        .section-title {
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 2rem;
+            margin: 4rem 0 2rem;
+            color: #1a1a1a;
             animation: fadeUp 0.5s ease forwards;
         }
 
-        /* Tabs */
-        .tabs {
-            margin-bottom: 2rem;
-        }
-
-        .tabs-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            max-width: 400px;
-            margin: 0 auto 2rem;
-            background: #f5f5f5;
-            border-radius: 0.5rem;
-            padding: 0.25rem;
-            gap: 0.25rem;
-        }
-
-        .tab-trigger {
-            all: unset;
-            padding: 0.5rem;
+        .section-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
             text-align: center;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .tab-trigger.active {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Grid de cards */
-        .cards-grid {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-bottom: 2rem;
+            color: #444;
             animation: fadeUp 0.5s ease forwards;
         }
 
-        /* Card */
-        .card {
+        /* Grid de membros */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Card de membro */
+        .member-card {
             background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            border-radius: 1rem;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeUp 0.5s ease forwards;
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .card-header {
-            padding: 1.5rem 1.5rem 1rem;
-            text-align: center;
-        }
-
-        .avatar {
-            width: 128px;
-            height: 128px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #666;
-            overflow: hidden;
-        }
-
-        .avatar img {
+        .member-photo {
             width: 100%;
-            height: 100%;
+            height: 250px;
             object-fit: cover;
         }
 
-        .card-title {
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-name {
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: #1a1a1a;
         }
 
-        .card-description {
-            font-size: 0.875rem;
-            color: #666;
-        }
-
-        .card-content {
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        .info-text {
+        .member-role {
             font-size: 0.875rem;
             color: #666;
             margin-bottom: 1rem;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
+        .member-project {
+            font-size: 0.875rem;
+            color: #444;
+            margin-bottom: 1rem;
         }
 
-        .social-link {
+        .member-bio {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .member-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .member-link {
             color: #666;
             transition: color 0.2s;
         }
 
-        .social-link:hover {
+        .member-link:hover {
             color: #e63946;
         }
 
-        /* Timeline */
-        .timeline {
-            margin-top: 4rem;
-            padding: 0 1rem;
-        }
-
-        .timeline-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-            animation: fadeUp 0.5s ease forwards;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 2rem;
-            animation: fadeUp 0.5s ease forwards;
-        }
-
-        .timeline-year {
-            display: flex;
-            align-items: center;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-year::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 1.5rem;
-            height: 1.5rem;
-            background: #e63946;
-            border-radius: 50%;
-        }
-
-        .timeline-card {
-            background: white;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
-        }
-
-        .timeline-card:hover {
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .badge {
-            display: inline-block;
-            margin-top: 0.5rem;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.75rem;
-            color: #e63946;
-            background: rgba(230, 57, 70, 0.1);
-            border-radius: 9999px;
-        }
-
-        /* Agradecimentos */
+        /* Seção de agradecimentos */
         .acknowledgments {
-            background: rgba(245, 245, 245, 0.5);
-            border-radius: 0.75rem;
-            padding: 3rem 1rem;
-            margin-top: 4rem;
+            background: rgba(230, 57, 70, 0.05);
+            padding: 4rem 1rem;
             text-align: center;
+            border-radius: 1rem;
+            margin-top: 4rem;
             animation: fadeUp 0.5s ease forwards;
-        }
-
-        .acknowledgments-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 1rem;
-            color: #e63946;
         }
 
         .acknowledgments-title {
-            font-size: 1.875rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
         }
 
         .acknowledgments-text {
-            max-width: 42rem;
-            margin: 0 auto 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
             color: #666;
+            line-height: 1.7;
         }
 
-        .logos {
+        .sponsors {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
         }
 
-        .logo {
-            height: 3rem;
+        .sponsor-logo {
+            height: 4rem;
             opacity: 0.7;
             transition: opacity 0.3s;
         }
 
-        .logo:hover {
+        .sponsor-logo:hover {
             opacity: 1;
         }
 
@@ -270,7 +208,7 @@
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -280,211 +218,184 @@
 
         /* Responsividade */
         @media (max-width: 768px) {
-            .cards-grid {
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .members-grid {
                 grid-template-columns: 1fr;
             }
 
-            .logos {
-                flex-wrap: wrap;
+            .sponsors {
+                gap: 2rem;
+            }
+
+            .sponsor-logo {
+                height: 3rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/">
+                <img src="/logo.png" alt="LESH" class="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Início</a>
+                <a href="/quem-somos" class="nav-link">Quem Somos</a>
+                <a href="/equipe" class="nav-link">Equipe</a>
+                <a href="/projetos" class="nav-link">Projetos</a>
+                <a href="/eventos" class="nav-link">Eventos</a>
+                <a href="/publicacoes" class="nav-link">Publicações</a>
+                <a href="/contato" class="nav-link">Contato</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1 class="page-title">Nossa Equipe</h1>
-        
-        <div class="tabs">
-            <div class="tabs-list">
-                <button class="tab-trigger active" onclick="showTab('professors')">Professores</button>
-                <button class="tab-trigger" onclick="showTab('students')">Alunos</button>
-            </div>
+        <h1 class="section-title">Nossa Equipe</h1>
 
-            <div id="professors-tab" class="tab-content active">
-                <div class="cards-grid">
-                    <!-- Professor 1 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="/placeholder.svg" alt="Dra. Maria Silva" onerror="this.parentElement.innerHTML='MS'">
-                            </div>
-                            <h3 class="card-title">Dra. Maria Silva</h3>
-                            <p class="card-description">Coordenadora</p>
-                        </div>
-                        <div class="card-content">
-                            <p class="info-text">
-                                <strong>Área:</strong> Inteligência Artificial
-                            </p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                                </a>
-                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                </a>
-                                <a href="mailto:maria.silva@edu.br" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Professor 2 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="/placeholder.svg" alt="Dr. João Santos" onerror="this.parentElement.innerHTML='JS'">
-                            </div>
-                            <h3 class="card-title">Dr. João Santos</h3>
-                            <p class="card-description">Professor Pesquisador</p>
-                        </div>
-                        <div class="card-content">
-                            <p class="info-text">
-                                <strong>Área:</strong> Computação Quântica
-                            </p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                                </a>
-                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                </a>
-                                <a href="mailto:joao.santos@edu.br" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                </a>
-                            </div>
-                        </div>
+        <!-- Equipe Atual -->
+        <h2 class="section-subtitle">Equipe Atual</h2>
+        <div class="members-grid">
+            <!-- Exemplo de membro -->
+            <div class="member-card">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Dra. Maria Silva" class="member-photo">
+                <div class="member-info">
+                    <h3 class="member-name">Dra. Maria Silva</h3>
+                    <p class="member-role">Pesquisadora</p>
+                    <p class="member-project">Projeto: Inteligência Artificial aplicada à Saúde</p>
+                    <p class="member-bio">
+                        Doutora em Computação pela USP, com foco em Machine Learning e suas aplicações na área da saúde.
+                        Atualmente lidera pesquisas sobre diagnóstico auxiliado por IA.
+                    </p>
+                    <div class="member-links">
+                        <a href="#" class="member-link" title="LinkedIn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="member-link" title="Currículo Lattes">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="member-link" title="Email">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div id="students-tab" class="tab-content">
-                <div class="cards-grid">
-                    <!-- Aluno 1 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="/placeholder.svg" alt="Ana Oliveira" onerror="this.parentElement.innerHTML='AO'">
-                            </div>
-                            <h3 class="card-title">Ana Oliveira</h3>
-                            <p class="card-description">Doutoranda</p>
-                        </div>
-                        <div class="card-content">
-                            <p class="info-text">
-                                <strong>Projeto:</strong> Machine Learning aplicado à Saúde
-                            </p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                                </a>
-                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                </a>
-                                <a href="mailto:ana.oliveira@edu.br" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Aluno 2 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="/placeholder.svg" alt="Pedro Costa" onerror="this.parentElement.innerHTML='PC'">
-                            </div>
-                            <h3 class="card-title">Pedro Costa</h3>
-                            <p class="card-description">Mestrando</p>
-                        </div>
-                        <div class="card-content">
-                            <p class="info-text">
-                                <strong>Projeto:</strong> Processamento de Linguagem Natural
-                            </p>
-                            <div class="social-links">
-                                <a href="https://linkedin.com" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                                </a>
-                                <a href="http://lattes.cnpq.br" target="_blank" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                </a>
-                                <a href="mailto:pedro.costa@edu.br" class="social-link">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                </a>
-                            </div>
-                        </div>
+            <!-- Outro membro -->
+            <div class="member-card">
+                <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" alt="Dr. João Santos" class="member-photo">
+                <div class="member-info">
+                    <h3 class="member-name">Dr. João Santos</h3>
+                    <p class="member-role">Pesquisador</p>
+                    <p class="member-project">Projeto: Computação Quântica</p>
+                    <p class="member-bio">
+                        Doutor em Física Computacional, com experiência em algoritmos quânticos e 
+                        otimização. Desenvolve pesquisas na interface entre computação quântica e machine learning.
+                    </p>
+                    <div class="member-links">
+                        <a href="#" class="member-link" title="LinkedIn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="member-link" title="Currículo Lattes">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="member-link" title="Email">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline">
-            <h2 class="timeline-title">Alunos Bolsistas</h2>
-            
-            <!-- 2024 -->
-            <div class="timeline-item">
-                <div class="timeline-year">
-                    <svg width="24" height="24" class="timeline-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    2024
-                </div>
-                <div class="timeline-card">
-                    <h4 class="card-title">Lucas Silva</h4>
-                    <p class="info-text">Machine Learning em Tempo Real</p>
-                    <span class="badge">CAPES</span>
-                </div>
-                <div class="timeline-card">
-                    <h4 class="card-title">Maria Santos</h4>
-                    <p class="info-text">Redes Neurais Aplicadas</p>
-                    <span class="badge">CNPq</span>
-                </div>
-            </div>
-
-            <!-- 2023 -->
-            <div class="timeline-item">
-                <div class="timeline-year">
-                    <svg width="24" height="24" class="timeline-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    2023
-                </div>
-                <div class="timeline-card">
-                    <h4 class="card-title">João Lima</h4>
-                    <p class="info-text">Processamento de Imagens</p>
-                    <span class="badge">FAPESP</span>
+        <!-- Antigos Membros -->
+        <h2 class="section-subtitle">Antigos Membros</h2>
+        <div class="members-grid">
+            <div class="member-card">
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" alt="Ana Oliveira" class="member-photo">
+                <div class="member-info">
+                    <h3 class="member-name">Ana Oliveira</h3>
+                    <p class="member-role">Pesquisadora (2020-2022)</p>
+                    <p class="member-project">Projeto: Processamento de Linguagem Natural</p>
+                    <p class="member-bio">
+                        Desenvolveu pesquisas em NLP e análise de sentimentos. Atualmente é 
+                        pesquisadora sênior em uma empresa de tecnologia.
+                    </p>
+                    <div class="member-links">
+                        <a href="#" class="member-link" title="LinkedIn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="member-link" title="Currículo Lattes">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Agradecimentos -->
         <div class="acknowledgments">
-            <svg class="acknowledgments-icon" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="7"/>
-                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-            </svg>
             <h2 class="acknowledgments-title">Agradecimentos</h2>
             <p class="acknowledgments-text">
                 Agradecemos às agências de fomento CAPES, CNPq e FAPESP pelo apoio 
                 fundamental ao desenvolvimento de nossa pesquisa e à formação de 
                 nossos alunos através da concessão de bolsas de estudo.
             </p>
-            <div class="logos">
-                <img src="/placeholder.svg" alt="CAPES" class="logo">
-                <img src="/placeholder.svg" alt="CNPq" class="logo">
-                <img src="/placeholder.svg" alt="FAPESP" class="logo">
+            <div class="sponsors">
+                <img src="/placeholder.svg" alt="CAPES" class="sponsor-logo">
+                <img src="/placeholder.svg" alt="CNPq" class="sponsor-logo">
+                <img src="/placeholder.svg" alt="FAPESP" class="sponsor-logo">
             </div>
         </div>
     </div>
-
-    <script>
-        function showTab(tabName) {
-            // Remove active class from all tabs and contents
-            document.querySelectorAll('.tab-trigger').forEach(trigger => {
-                trigger.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Add active class to selected tab and content
-            document.querySelector(`.tab-trigger[onclick*="${tabName}"]`).classList.add('active');
-            document.getElementById(`${tabName}-tab`).classList.add('active');
-        }
-    </script>
 </body>
 </html>
+

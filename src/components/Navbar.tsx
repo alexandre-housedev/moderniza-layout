@@ -1,72 +1,54 @@
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const menuItems = [
-    { title: "Início", path: "/" },
-    { title: "Quem Somos", path: "/quem-somos" },
-    { title: "Equipe", path: "/equipe" },
-    { title: "Projetos", path: "/projetos" },
-    { title: "Eventos", path: "/eventos" },
-    { title: "Publicações", path: "/publicacoes" },
-    { title: "Contato", path: "/contato" },
-  ];
-
   return (
-    <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center">
-            <img src="/logo.png" alt="LESH" className="h-8" />
-          </Link>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="text-gray-700 hover:text-accent transition-colors duration-200 text-sm font-medium"
-              >
-                {item.title}
+    <header className="fixed top-0 left-0 right-0 h-16 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
+      <nav className="container h-full flex items-center justify-between">
+        <Link to="/" className="font-bold text-xl">
+          LESH
+        </Link>
+        <NavigationMenu>
+          <NavigationMenuList className="hidden md:flex gap-6">
+            <NavigationMenuItem>
+              <Link to="/" className="text-sm font-medium transition-colors hover:text-accent">
+                Início
               </Link>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-accent"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-b border-gray-100">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.title}
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/team" className="text-sm font-medium transition-colors hover:text-accent">
+                Equipe
               </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/projetos" className="text-sm font-medium transition-colors hover:text-accent">
+                Projetos
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/eventos" className="text-sm font-medium transition-colors hover:text-accent">
+                Eventos
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/publicacoes" className="text-sm font-medium transition-colors hover:text-accent">
+                Publicações
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/contato" className="text-sm font-medium transition-colors hover:text-accent">
+                Contato
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
+    </header>
   );
 };
 

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Bell, BookOpen, ExternalLink } from "lucide-react";
@@ -111,6 +110,59 @@ const Index = () => {
                 </button>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quem Somos Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold mb-6">Quem Somos</h2>
+            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              O LEHS - UFF (Laboratório de Experimentação em História Social) é um espaço acadêmico dedicado à pesquisa e experimentação em história social. Fundado em 2010, nosso laboratório tem se destacado como um centro de referência em estudos históricos e sociais.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <div className="bg-secondary/20 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Nossa Missão</h3>
+                <p className="text-gray-600">
+                  Promover a pesquisa e o desenvolvimento de metodologias inovadoras no campo da História Social, incentivando a colaboração entre pesquisadores e a formação de novos historiadores.
+                </p>
+              </div>
+
+              <div className="bg-secondary/20 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Objetivos</h3>
+                <ul className="text-gray-600 space-y-3 list-disc list-inside">
+                  <li>Desenvolver pesquisas interdisciplinares em História Social</li>
+                  <li>Formar pesquisadores comprometidos com a inovação metodológica</li>
+                  <li>Promover o diálogo entre diferentes áreas do conhecimento</li>
+                  <li>Contribuir para o avanço dos estudos históricos no Brasil</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-secondary/20 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Áreas de Atuação</h3>
+                <ul className="text-gray-600 space-y-3 list-disc list-inside">
+                  <li>História Social do Trabalho</li>
+                  <li>História Social da Cultura</li>
+                  <li>História Social da Política</li>
+                  <li>Metodologia da Pesquisa Histórica</li>
+                  <li>Teoria da História</li>
+                </ul>
+              </div>
+
+              <div className="bg-secondary/20 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Nossa Estrutura</h3>
+                <p className="text-gray-600">
+                  O LEHS conta com uma equipe multidisciplinar de pesquisadores, incluindo professores, alunos de graduação e pós-graduação. Nossa infraestrutura inclui espaços para pesquisa, biblioteca especializada e recursos tecnológicos para desenvolvimento de projetos.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

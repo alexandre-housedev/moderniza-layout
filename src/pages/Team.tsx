@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Instagram } from "lucide-react";
 import {
@@ -9,6 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ProjectsBox from "@/components/ProjectsBox";
+import { getProjectsByUser } from "@/data/projects";
 
 const students = [
   {
@@ -58,45 +60,62 @@ const collaborators = [
   }
 ];
 
-const MemberCard = ({ member, type = "student" }) => (
-  <Card className="group animate-fade-up hover:shadow-lg transition-all duration-300">
-    <CardHeader className="text-center">
-      <Avatar className="w-32 h-32 mx-auto mb-4">
-        <AvatarImage src={member.photo} alt={member.name} />
-        <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-      </Avatar>
-      <CardTitle className="text-xl font-bold">{member.name}</CardTitle>
-      {type === "student" && (
-        <CardDescription className="text-sm text-gray-600 mt-2">
-          {member.title}
-        </CardDescription>
-      )}
-    </CardHeader>
-    <CardContent>
-      <p className="text-sm text-gray-600 mb-4">
-        {type === "student" ? member.description : member.bio}
-      </p>
-      <div className="flex justify-center gap-4">
-        <Link
-          to={member.linkedin}
-          target="_blank"
-          className="text-gray-600 hover:text-accent transition-colors"
-          aria-label="LinkedIn"
-        >
-          <Linkedin className="h-5 w-5" />
-        </Link>
-        <Link
-          to={member.instagram}
-          target="_blank"
-          className="text-gray-600 hover:text-accent transition-colors"
-          aria-label="Instagram"
-        >
-          <Instagram className="h-5 w-5" />
-        </Link>
-      </div>
-    </CardContent>
-  </Card>
-);
+const MemberCard = ({ member, type = "student" }) => {
+  const [showProjects, setShowProjects] = useState(false);
+  const projects = getProjectsByUser(member.name);
+  
+  return (
+    <Card className="group animate-fade-up hover:shadow-lg transition-all duration-300">
+      <CardHeader className="text-center">
+        <Avatar className="w-32 h-32 mx-auto mb-4">
+          <AvatarImage src={member.photo} alt={member.name} />
+          <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+        </Avatar>
+        <CardTitle className="text-xl font-bold">{member.name}</CardTitle>
+        {type === "student" && (
+          <CardDescription className="text-sm text-gray-600 mt-2">
+            {member.title}
+          </CardDescription>
+        )}
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-gray-600 mb-4">
+          {type === "student" ? member.description : member.bio}
+        </p>
+        <div className="flex justify-between items-center">
+          <div className="flex gap-4">
+            <Link
+              to={member.linkedin}
+              target="_blank"
+              className="text-gray-600 hover:text-accent transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </Link>
+            <Link
+              to={member.instagram}
+              target="_blank"
+              className="text-gray-600 hover:text-accent transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </Link>
+          </div>
+          {projects.length > 0 && (
+            <button 
+              onClick={() => setShowProjects(!showProjects)}
+              className="text-sm text-e63946 hover:underline"
+            >
+              {showProjects ? 'Ocultar projetos' : 'Ver projetos'}
+            </button>
+          )}
+        </div>
+        
+        {showProjects && <ProjectsBox userName={member.name} projects={projects} />}
+      </CardContent>
+    </Card>
+  );
+};
 
 const Team = () => {
   return (

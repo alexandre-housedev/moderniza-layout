@@ -111,6 +111,15 @@ body {
     margin-top: 0.25rem;
 }
 
+/* Project Box Styles */
+.border-e63946 {
+    border-color: #e63946;
+}
+
+.text-e63946 {
+    color: #e63946;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .timeline {

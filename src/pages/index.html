@@ -9,6 +9,25 @@
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 <body>
+    <!-- Popup -->
+    <div id="homePopup" class="popup hidden">
+        <div class="popup-overlay"></div>
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="popup-title">Aviso Importante</h3>
+                <button class="popup-close">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M18 6L6 18M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <p class="popup-message">Participe de nossas reuniões, elas são abertas</p>
+            <div class="popup-actions">
+                <button class="popup-button">Entendi</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -153,6 +172,22 @@
                     }
                 });
             }
+
+            // Popup functionality
+            const popup = document.getElementById('homePopup');
+            const closeButtons = popup.querySelectorAll('.popup-close, .popup-button');
+            
+            // Show popup after a delay
+            setTimeout(function() {
+                popup.classList.remove('hidden');
+            }, 1500);
+            
+            // Close popup when any close button is clicked
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    popup.classList.add('hidden');
+                });
+            });
         });
     </script>
 </body>

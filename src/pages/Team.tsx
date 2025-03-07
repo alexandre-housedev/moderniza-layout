@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram, Clock } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -177,6 +178,13 @@ const Team = () => {
           <p className="text-gray-600 mb-6">
             Aos que já passaram, O LEHS - UFF é um espaço feito que vem sendo ampliado desde 2010 por iniciativas diversas de diferentes pessoas, cada uma do seu jeito, mas todas criativas, com espírito crítico, solidárias e com disposição para o trabalho do campo. Todos os alunos que procuram inovaram sua contribuição. Agradecemos e continuamos somando!
           </p>
+          <Link 
+            to="/historico-bolsistas" 
+            className="inline-flex items-center gap-2 mt-4 text-e63946 hover:underline"
+          >
+            <Clock size={16} />
+            Ver histórico completo de bolsistas
+          </Link>
         </div>
       </section>
     </div>

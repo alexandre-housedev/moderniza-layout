@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -162,6 +161,24 @@
     <script>
         // Simple JavaScript para funcionalidade básica
         document.addEventListener('DOMContentLoaded', function() {
+            // Popup functionality
+            const popup = document.getElementById('homePopup');
+            if (popup) {
+                const closeButtons = popup.querySelectorAll('.popup-close, .popup-button');
+                
+                // Show popup after a delay
+                setTimeout(function() {
+                    popup.classList.remove('hidden');
+                }, 1500);
+                
+                // Close popup when any close button is clicked
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        popup.classList.add('hidden');
+                    });
+                });
+            }
+
             // Fechar alerta de evento
             const alertClose = document.querySelector('.event-alert-close');
             if (alertClose) {
@@ -172,22 +189,6 @@
                     }
                 });
             }
-
-            // Popup functionality
-            const popup = document.getElementById('homePopup');
-            const closeButtons = popup.querySelectorAll('.popup-close, .popup-button');
-            
-            // Show popup after a delay
-            setTimeout(function() {
-                popup.classList.remove('hidden');
-            }, 1500);
-            
-            // Close popup when any close button is clicked
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    popup.classList.add('hidden');
-                });
-            });
         });
     </script>
 </body>
